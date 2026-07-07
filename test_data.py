@@ -1,8 +1,8 @@
 FIRST_NAME = "Aaditya"
 LAST_NAME = "Bhandari"
 
-EMAIL = "bhandariaaditya78@gmail.com@gmail.com"
-PHONE = "9845658567"
+EMAIL = "aadityabhandari770@gmail.com"
+PHONE = "9845658569"
 
 PASSWORD = "Password@123"
 

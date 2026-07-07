@@ -68,13 +68,15 @@ def submit_form(driver):
 def wait_for_otp_verification(driver):
     print("=" * 60)
     print("Waiting for manual OTP verification...")
-    print("Please enter the OTP and click Verify Code.")
+    print("Enter OTP and click Verify Code.")
     print("=" * 60)
 
     WebDriverWait(driver, 300).until(
-        EC.visibility_of_element_located(
-            (By.XPATH, "//*[contains(text(),'Agency Details')]")
+        EC.presence_of_element_located(
+            (By.NAME, "agency_name")
         )
     )
+
+    print("OTP verified successfully.")
 
     print("OTP verified successfully. Continuing automation...")

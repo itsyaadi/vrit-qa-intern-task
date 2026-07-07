@@ -17,6 +17,11 @@ from experience import (
     submit_experience,
 )
 
+from verification import (
+    fill_verification,
+    submit_verification,
+)
+
 from test_data import *
 
 
@@ -27,10 +32,10 @@ def test_registration(driver):
     # STEP 2 - Click Get Started
     click_get_started(driver)
 
-    # STEP 3 - Accept Terms & Continue
+    # STEP 3 - Accept Terms
     accept_terms_and_continue(driver)
 
-    # STEP 4 - Fill Sign Up Form
+    # STEP 4 - Fill Account Details
     fill_signup_form(
         driver=driver,
         first_name=FIRST_NAME,
@@ -40,15 +45,14 @@ def test_registration(driver):
         password=PASSWORD,
     )
 
-    # STEP 5 - Submit Sign Up
+    # STEP 5 - Submit Account Details
     submit_form(driver)
 
-    # STEP 6 - Wait for Manual OTP Verification
+    # STEP 6 - Manual OTP
     wait_for_otp_verification(driver)
+    print(" Step 1 completed successfully.")
 
-    print("✅ Step 1 completed successfully.")
-
-    # STEP 7 - Fill Agency Details
+    # STEP 7 - Agency Details
     fill_agency_details(
         driver=driver,
         agency_name=AGENCY_NAME,
@@ -59,20 +63,31 @@ def test_registration(driver):
         region=REGION,
     )
 
-    # STEP 8 - Submit Agency Details
     submit_agency(driver)
+    print(" Step 2 completed successfully.")
 
-    print("✅ Step 2 completed successfully.")
-    print("➡️ Ready for Professional Experience automation.")
+    # STEP 8 - Professional Experience
+    fill_experience_details(
+        driver=driver,
+        years=YEARS,
+        students=STUDENTS,
+        focus_area=FOCUS_AREA,
+        success_rate=SUCCESS_RATE,
+    )
 
-fill_experience_details(
-    driver,
-    YEARS,
-    STUDENTS,
-    FOCUS_AREA,
-    SUCCESS_RATE,
-)
+    submit_experience(driver)
+    print(" Step 3 completed successfully.")
 
-submit_experience(driver)
+    # STEP 9 - Verification
+    fill_verification(
+        driver=driver,
+        registration_number=REGISTRATION_NUMBER,
+        preferred_countries=PREFERRED_COUNTRIES,
+        institution_types=INSTITUTION_TYPES,
+        certification=CERTIFICATION,
+        document_path=DOCUMENT,
+    )
 
-print("Page 3 completed successfully.")
+    submit_verification(driver)
+
+    print(" Registration automation completed successfully.")
